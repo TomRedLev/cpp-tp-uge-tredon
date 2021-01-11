@@ -21,7 +21,37 @@ Un programme peut-être compilé avec un code classifié comme UB (on peut le vo
 Cependant le code émet un warning à la compilation et relève une exception lors de l'exécution.
 
 
+
+
 /** Exercice 2 : **/
+/* Question 1 : */
+Il y a des erreurs sur les lignes b3, c8, d10, d11, d12, i16, i18 et b20, sans l'option -Werror.
+Il y a des erreurs sur les lignes b3, c8, d10, d11, d12, i16, i18 et b20, avec l'option -Werror.
+Pour corriger ces erreurs, il faut : 
+- b3 : "non-constant-expression" : On peut faire un cast sur i1, pour le "convertir" en boolean.
+- c8 : "Initialize a variable of type 'char' with an lvalue of type 'const char [2]'" :
+        On peut changer les "" en '' pour éliminer l'erreur.
+- d10 : "non-constant-expression" : On peut faire un cast sur i1 en utilisant static_cast<double>.
+- d11 : "cannot initialize a variable of type 'double *' with an lvalue of type 'double'" :
+        On peut utiliser un '&' devant d10, pour pouvoir donner l'addresse de d10 au lieu de donner sa valeur.
+- d12 : "declaration of reference variable 'd12' requires an initializer" :
+        On peut initialiser la variable en utilisant *d11.
+- i16 : "cannot initialize a variable of type 'int *' with an rvalue of type 'bool *'" :
+        On peut faire un cast de la façon suivante : int* i16 = (int *) &b2;.
+- i18 : "binding value of type 'const int' to reference to type 'int' drops 'const' qualifier" :
+        On peut faire un cast de la façon suivante : int& i18{(int&) i14};.
+- b20 : "default initialization of an object of const type 'const bool'" :
+        Il faut définir une valeur de base à une constante.
+
+/* Question 2 : */
+La valeur de s0 est : 0.
+La valeur de *i15 est : 2.
+La valeur de ul7 est : 65543.
+
+
+
+
+
 
 
 /** Exercice 3 : **/
