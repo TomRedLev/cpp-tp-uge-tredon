@@ -3,13 +3,14 @@
 /** Exercice 1 : **/
 /* Question 1 : */
 Les avantages d'un langage compilé vis à vis d'autres types sont sa rapidité d'exécution, ainsi qu'il puisse donc être exécuté
-directement sur le système d'exploitation.
+directement sur le système d'exploitation, sans appeler un interpréteur à chaque fois.
 Les désaventages d'un langage compilé vis à vis d'autres types sont que les exécutables ne sont pas portables. Il faudra
 donc fournir le code-source pour pouvoir recompiler le code sur le système utilisé.
 
 /* Question 2 : */
 Une erreur de compilation est une erreur qui empèche le programme de compilé et qui se produira lors de l'appel au compilateur.
 On peut donc la corriger en observant les erreurs renvoyés par la compilateur, et en tentant de les résoudre.
+Le compilateur ne produira donc pas de fichier exécutable.
 Une erreur d'exécution est une erreur qui arrive pendant l'exécution du programme.
 Il faudra donc effectuer des tests (print de values, vérification d'état du programme, ...) pour pouvoir déterminer d'où vient
 l'erreur.
@@ -55,9 +56,31 @@ La valeur de ul7 est : 65543.
 
 
 /** Exercice 3 : **/
+/* Question 1 : */
+Les signatures de fonctions sont donc devenues les suivantes :
+int add(int a, int b); (On prend deux entiers et on retourne l'addition de ces deux entiers).
+void add_to(int & a, int b); (On prend une addresse et un entier et on ne retourne rien après l'ajout de 
+                            l'entier à l'addresse).
+void another_add_to(int * a, int b); (On prend un pointeur et un entier et on ne retourne rien après l'addition 
+                                    entre l'entier désigné par le pointeur et l'entier).
+
+/* Question 2 : */
+On va utiliser le passage par valeur, quand on veut utiliser la valeur d'une variable, sans la modifier dans la fonction.
+On va utiliser le passage par référence pour les fonctions qui vont modifier les variables passées en paramètre.
+On va utiliser le passage par référence constante pour passer des paramètres à la fonction qui sont trop coûteux à copier.
+
+/* Question 3 : */
+J'aurais fait les modifications suivantes : 
+int         count_a_occurences(std::string& s);
+void        update_loop(const float& dt, std::string*& errors_out);
+bool        are_all_positives(std::vector<int>& values, int* negative_indices_out, size_t* negative_count_out);
+std::string* concatenate(char* str1, char* str2);
+
+
 
 
 /** Exercice 4 : **/
+
 
 
 /** Exercice 5 : **/
