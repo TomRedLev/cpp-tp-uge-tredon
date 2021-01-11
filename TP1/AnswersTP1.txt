@@ -1,6 +1,24 @@
 /** Fichier de réponses du TP1 - Tom REDON - Groupe 2 - M1 UGE **/
 
 /** Exercice 1 : **/
+/* Question 1 : */
+Les avantages d'un langage compilé vis à vis d'autres types sont sa rapidité d'exécution, ainsi qu'il puisse donc être exécuté
+directement sur le système d'exploitation.
+Les désaventages d'un langage compilé vis à vis d'autres types sont que les exécutables ne sont pas portables. Il faudra
+donc fournir le code-source pour pouvoir recompiler le code sur le système utilisé.
+
+/* Question 2 : */
+Une erreur de compilation est une erreur qui empèche le programme de compilé et qui se produira lors de l'appel au compilateur.
+On peut donc la corriger en observant les erreurs renvoyés par la compilateur, et en tentant de les résoudre.
+Une erreur d'exécution est une erreur qui arrive pendant l'exécution du programme.
+Il faudra donc effectuer des tests (print de values, vérification d'état du programme, ...) pour pouvoir déterminer d'où vient
+l'erreur.
+
+/* Question 3 : */
+Undefined behavior signifie que le programme n'est pas capable de gérer un certain état, car on ne lui garantit pas une
+que cet état sera supporté par le standard ou par le programme en lui-même.
+Un programme peut-être compilé avec un code classifié comme UB (on peut le voir dans l'exemple situé dans le dossier Exercice1).
+Cependant le code émet un warning à la compilation et relève une exception lors de l'exécution.
 
 
 /** Exercice 2 : **/
