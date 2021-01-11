@@ -1,0 +1,15 @@
+/** Fichier de réponses du TP1 - Tom REDON - Groupe 2 - M1 UGE **/
+
+/** Exercice 1 : **/
+
+
+/** Exercice 2 : **/
+
+
+/** Exercice 3 : **/
+
+
+/** Exercice 4 : **/
+
+
+/** Exercice 5 : **/
