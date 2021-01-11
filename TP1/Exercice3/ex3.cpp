@@ -22,7 +22,7 @@ int main() {
   return 0;
 }
 
-int         count_a_occurences(std::string& s);
+int         count_a_occurences(const std::string& s);
 void        update_loop(const float& dt, std::string*& errors_out);
 bool        are_all_positives(std::vector<int>& values, int* negative_indices_out, size_t* negative_count_out);
 std::string* concatenate(char* str1, char* str2);
