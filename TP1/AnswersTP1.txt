@@ -80,7 +80,10 @@ std::string* concatenate(char* str1, char* str2);
 
 
 /** Exercice 4 : **/
+/* Question 1 : */
+Voir ex4.cpp dans le dossier Exercice4.
 
-
+/* Question 2 : */
+Voir ex4.cpp dans le dossier Exercice4.
 
 /** Exercice 5 : **/
