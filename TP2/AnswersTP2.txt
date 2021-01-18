@@ -1,0 +1,29 @@
+/** Fichier de réponses du TP2 - Tom REDON - Groupe 2 - M1 UGE **/
+
+/** Exercice 1 : **/
+/* Question 1 : */
+Les deux valeurs affichées à la fin sont 17 et 17.
+
+/* Question 2 : */
+On aura une erreur à la compilation, du type undefined symbols.
+
+/** Exercice 2 : **/
+/* Question 1 : */
+On réimplémente toutes les fonctions demandées.
+
+/* Question 2 : */
+new Histogram without parameters : 0x7ffedfca2260
+new Histogram without parameters : 0x7ffedfca2258
+new Histogram with parameters : 0x7ffedfca2240
+h1 : 0x7ffedfca2260
+h2 : 0x7ffedfca2258
+h3 : 0x7ffedfca2240
+Destructed Histogram 0x7ffedfca2240
+Destructed Histogram 0x7ffedfca2258
+Destructed Histogram 0x7ffedfca2260
+On crée donc, dans l'ordre : h1, h2 puis h3, les deux premiers sans paramètres et le deuxième en 
+appelant le constructeur par copie.
+Ensuite on détruit h3, puis h2 puis h1.
+
+/* Question 3 : */
+
