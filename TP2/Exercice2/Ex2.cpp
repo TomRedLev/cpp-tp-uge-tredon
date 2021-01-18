@@ -6,6 +6,7 @@ Histogram::Histogram()
     std::cout<<" new Histogram without parameters : "<<this<<std::endl;
 }
 
+/*
 Histogram::Histogram(const Histogram& hg)
     : _count { new unsigned[26] {} }
 { 
@@ -14,6 +15,7 @@ Histogram::Histogram(const Histogram& hg)
     }
     std::cout<<" new Histogram with parameters : "<<this<<std::endl;
 }
+*/
 
 Histogram::~Histogram(){
     delete[] _count;

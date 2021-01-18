@@ -26,4 +26,14 @@ appelant le constructeur par copie.
 Ensuite on détruit h3, puis h2 puis h1.
 
 /* Question 3 : */
+Le code ne compile plus en appelant une erreur telle que : 
+Undefined symbols for architecture x86_64:
+  "Histogram::Histogram(Histogram const&)", referenced from:
+      _main in Ex2-be751b.o
+Cependant, je suppose que si le code compilait et n'effectuait qu'une copie créée avec le constructeur de copie
+par défaut, alors on aurait des mallocs car l'on se servirait du même tableau dans chaque copie.
+
+
+/** Exercice 3 : **/
+/* Question 1 : */
 
