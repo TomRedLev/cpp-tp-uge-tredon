@@ -8,7 +8,7 @@ Deque : 0(1) pour les insertions et suppressions au début et à la fin, 0(1) po
 Forward list : 0(1) pour les insertions et suppressions, 0(n) pour l'accès cependant.
 List : 0(1) pour les insertions et suppressions, 0(n) pour l'accès cependant.
 Set : O(log n) pour les insertions et suppressions. O(n) pour l'accès cependant.
-Unordered set : O(n) pour les insertions et les suppressions, O(n) pour l'accès cependant
+Unordered set : O(n) pour les insertions et les suppressions, O(n) pour l'accès cependant.
 
 /* Question 2 : */
 Array : Aucune opération ne rend l'iterator invalide.
@@ -31,3 +31,7 @@ On peut remarquer que tout ceux qui ont un temps linéaire de suppression devien
 
 /* Question 6 : */
 Il manque une fonction de comparaison.
+
+/* Exercice 2 */
+Un set semble être la meilleure implémentation pour le botin.
+Cependant, il sera mieux d'utiliser un vector pour représenter un numéro de téléphone.
