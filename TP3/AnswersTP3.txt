@@ -2,8 +2,32 @@
 
 /** Exercice 1 : **/
 /* Question 1 : */
-
+Array : O(size) dans le pire cas pour l'accès
+Vector : O(1) insertion et suppression à la fin, 0(n) pour insertion et suppression autre part, 0(1) pour un accès random.
+Deque : 0(1) pour les insertions et suppressions au début et à la fin, 0(1) pour un random access.
+Forward list : 0(1) pour les insertions et suppressions, 0(n) pour l'accès cependant.
+List : 0(1) pour les insertions et suppressions, 0(n) pour l'accès cependant.
+Set : O(log n) pour les insertions et suppressions. O(n) pour l'accès cependant.
+Unordered set : O(n) pour les insertions et les suppressions, O(n) pour l'accès cependant
 
 /* Question 2 : */
+Array : Aucune opération ne rend l'iterator invalide.
+Vector : Suppression et insertion, ou bien encore swap.
+Deque : Suppression et insertion.
+Forward list : Aucune opération ne rend l'iterator invalide.
+List : Aucune opération ne rend l'iterator invalide.
+Set : Aucune opération ne rend l'iterator invalide.
+Unordered set : Tant qu'il n'y a pas de réhachage, aucune opération ne rend l'iterator invalide.
 
 /* Question 3 : */
+push_back place un élément en fin de liste, alors que emplace_back construit un élément en fin de liste.
+
+/* Question 4 : */
+Cela ne peut pas compiler car on ne donne jamais de valeur au shift.
+
+/* Question 5 : */
+9592 valeurs.
+On peut remarquer que tout ceux qui ont un temps linéaire de suppression deviennent extrêmement longs.
+
+/* Question 6 : */
+Il manque une fonction de comparaison.
