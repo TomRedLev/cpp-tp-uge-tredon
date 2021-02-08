@@ -9,4 +9,9 @@ class MobilePhone : public Phone
             : Phone {person}
         {}
 
+        void ring() const override
+        { 
+            _owner.answer_phone();
+        }
+
 };

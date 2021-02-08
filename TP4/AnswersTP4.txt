@@ -9,3 +9,10 @@ lui-même.
 /* Question 5 : */
 Il faut penser que c'est une classe Polymorphe car c'est un appel virtuel.
 Il faut toujours écrire un destructeur dans la classe mère.
+
+/* Question 8 : */
+Le code compile car on accède l'objet est instancié et on ne fait pas que passer une référence à
+une variable de type Phone (on ne crée pas un nouvel objet mais on l'instancie quand même).
+
+/* Question 10 : */
+Le code compilait surement car j'avais redéfini la fonction ring dans la classe MobilePhone vu qu'elle est devenue nécessaire.

@@ -14,13 +14,13 @@ class HomePhone : public Phone
         { 
             if (_position == _owner.get_position())
             {
-                Phone::ring(); 
+                _owner.answer_phone();
             } else 
             {
                 std::cout << "This is the voicemail of " << _owner.get_name() << ". Please leave a message." << std::endl;
             }
         }
-        
+
 
     private :
         int _position = 0;

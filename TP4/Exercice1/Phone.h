@@ -5,14 +5,13 @@
 class Phone
 {
 public:
-	Phone(const Person& owner)
-		: _owner { owner }
-	{}
-
-	virtual void ring() const { _owner.answer_phone(); }
+	virtual void ring() const = 0;
 
 	virtual ~Phone() {}
 
 protected:
 	const Person& _owner;
+	Phone(const Person& owner)
+		: _owner { owner }
+	{}
 };
