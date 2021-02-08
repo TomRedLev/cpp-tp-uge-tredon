@@ -22,9 +22,14 @@ public:
 		return _position;
 	}
 
+	std::string get_name() const 
+	{
+		return _name;
+	}
+
 	void set_position(int position)
 	{
-		position = _position;
+		_position = position;
 	}
 
 private:

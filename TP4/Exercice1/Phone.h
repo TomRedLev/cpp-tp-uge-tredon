@@ -9,8 +9,10 @@ public:
 		: _owner { owner }
 	{}
 
-	void ring() const { _owner.answer_phone(); }
+	virtual void ring() const { _owner.answer_phone(); }
 
-private:
+	virtual ~Phone() {}
+
+protected:
 	const Person& _owner;
 };

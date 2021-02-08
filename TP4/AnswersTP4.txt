@@ -1,0 +1,11 @@
+/** Fichier de réponses du TP4 - Tom REDON - Groupe 2 - M1 UGE **/
+
+/** Exercice 1 : **/
+/* Question 1 : */
+La différence principale entre stocker un attribut du type const Person est que l'on va stocker une copie de l'objet Person,
+qui ne sera pas lié vraiment à l'objet alors que l'attribut du type const Person& permet le stockage d'une référence à l'élément en
+lui-même.
+
+/* Question 5 : */
+Il faut penser que c'est une classe Polymorphe car c'est un appel virtuel.
+Il faut toujours écrire un destructeur dans la classe mère.
