@@ -1,4 +1,3 @@
-
 #pragma once
 #include <cassert>
 #include "shape.hpp"
@@ -27,7 +26,7 @@ public:
 	// dir1.y * dir2.x * b + dir1.y * (offset2.x - offset1.x) = dir1.x * dir2.y * b + dir1.x * (offset2.y - offset1.y)
 	// that is:
 	// b = (dir1.x * (offset2.y - offset1.y) - dir1.y * (offset2.x - offset1.x)) / (dir1.y * dir2.x - dir1.x * dir2.y)
-	PointContainer intersect(const Line& ln) const {
+	PointContainer intersect(const Line& ln) const override {
 		const Point dir1 = direction().normalized();
 		const Point dir2 = ln.direction().normalized();
 		// if the lines are parallel, by convention, they don't intersect
@@ -40,6 +39,13 @@ public:
 		return {};
 	}
 
+	PointContainer intersect(const Shape& ln) const override {
+		return ln.intersect(*this);
+	}
+
 	~Line() = default;
 
+	std::ostream& print(std::ostream& os) const override {
+		return os << "line through " << first << " & " << last;
+	}
 };

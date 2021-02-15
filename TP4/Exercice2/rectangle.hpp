@@ -45,5 +45,13 @@ public:
 		return result;
 	}
 
+	PointContainer intersect(const Line& other) const override {
+		return other.intersect(*this);
+	}
+
+	std::ostream& print(std::ostream& os) const override {
+		return os << "Rectangle through " << lower_left << " & " << upper_right;
+	}
+
 	~Rectangle() = default;
 };
