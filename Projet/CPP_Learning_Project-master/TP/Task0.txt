@@ -1,0 +1,3 @@
+/* Fichier de réponse de la task 0 - Tom REDON - Groupe 2 - M1 Informatique */
+
+/* Première partie : */
