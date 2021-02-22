@@ -3,6 +3,8 @@
 #include "waypoint.hpp"
 
 #include <cassert>
+#include <vector>
+#include <utility>
 #include <algorithm>
 #include <unordered_map>
 
