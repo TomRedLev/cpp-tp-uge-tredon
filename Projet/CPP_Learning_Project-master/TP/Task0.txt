@@ -1,3 +1,7 @@
 /* Fichier de réponse de la task 0 - Tom REDON - Groupe 2 - M1 Informatique */
 
 /* Première partie : */
+La fonction responsable des inputs du programme est : create_keystrokes().
+Il faut appuyer sur C pour créer un avion.
+Il faut appuyer sur X ou sur Q pour quitter le programme.
+La touche F permet de mettre en full screen le programme.
