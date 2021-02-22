@@ -32,10 +32,10 @@ int main(int, char**) {
     some_shapes.emplace_back(new LineSegment{{0,2}, {10,2}});
     
     // test 3
-    some_shapes.emplace_back(new Rectangle{{10,-1}, {-10,1}});
+    //some_shapes.emplace_back(new Rectangle{{10,-1}, {-10,1}});
 
     // test 4
-    some_shapes.emplace_back(new Circle{{1,1}, 5});
+    //some_shapes.emplace_back(new Circle{{1,1}, 5});
     
     intersect_all(some_shapes);
     for(auto& p: some_shapes) delete p;

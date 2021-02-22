@@ -45,8 +45,19 @@ public:
 		return result;
 	}
 
-	PointContainer intersect(const Line& other) const override {
-		return other.intersect(*this);
+	PointContainer intersect(const Line& ln) const override {
+		for (auto elem : this->get_border()){
+			const Point dir1 = elem.direction().normalized();
+			const Point dir2 = ln.direction().normalized();
+			// if the lines are parallel, by convention, they don't intersect
+			if((dir1 != dir2) && (dir1 != -dir2)){
+				assert(dir1.y * dir2.x != dir1.x * dir2.y); // <-- that's just how math works (dir1 & dir2 have the same length!)
+				const Point offset_diff = ln.first - elem.first;
+				const float b = (dir1.x * offset_diff.y - dir1.y * offset_diff.x) / (dir1.y * dir2.x - dir1.x * dir2.y);
+				return {dir2 * b + ln.first};
+			}
+		}
+		return {};
 	}
 
 	std::ostream& print(std::ostream& os) const override {
