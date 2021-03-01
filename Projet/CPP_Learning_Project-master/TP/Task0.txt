@@ -5,3 +5,61 @@ La fonction responsable des inputs du programme est : create_keystrokes().
 Il faut appuyer sur C pour créer un avion.
 Il faut appuyer sur X ou sur Q pour quitter le programme.
 La touche F permet de mettre en full screen le programme.
+Si on ajoute plus de 3 avions, les autres avions attendent que les places
+soient disponibles pour attérir.
+
+/* Deuxième partie : */
+Commencant avec le repo GL/. Là on a
+Displayable - c'est une classe abstrait qui forme la base pour tout les choses qui peuvent être dessiné sur l'ecran. La classe contient une coordonné z qui permet de trier les objets de cette classe.
+DynamicObjject - une autre classe abstrait qui forme la base pour tout les choses qui peuvent "bouger" (en sense large, par example, un Terminal est aus
+si un DynamicObject, son movement est le débarquement des avions)
+opengl-interface - pas de classe ici, juste quelques fonctions necessaires pour interagir avec OpenGL; on remarque, par contre, la fonction timer dans laquelle tout les objets dans la move_queue ont leur move() appelé!
+Texture2D - une texture qui contient un pointeur vers un img::Image (qui contient les octets vrac de l'image); la texture peut être affichée avec Texture2D::draw
+Dans img/ on trouve les suivantes:
+Image - une classe qui gère des octets d'un image dans la memoire pour être utilisé avec Texture2D
+MediaPath - une classe qui gère l'acces aux PNGs qui vont avec le code
+stb_image - pas de classe ici, c'est en fait une bibliotheque C qui sait lire les PNGs correctement
+Finalement, les classes important pour la logique du projet:
+Point2D / Point3D - classes qui gèrent des maths entre points dans l'espace 2D et 3D
+Waypoint - un point sur un chemin d'un avion, c'est juste un Point3D avec l'information si ce point se trouve au sol, chez un terminal ou dans l'air; ici, on voit aussi qu'un "chemin" (WaypointQueue) est un deque de Waypoints.
+Runway - stocke le debut et le fin d'un piste de décollage
+Terminal - classe qui gère le débarquement d'un avion; chaque Terminal peut débarquer qu'un seul avion à la fois
+Aircraft - un avion qui peut (1) être déssiner (Displayable) et (2) bouger (DynamicObject); chaque avion peut retourné son "flight number" ansi que sa distance à un point donné
+AircraftType - le type d'un avion stocke des limites de vitesse et acceleration ansi que la texture; il y a 3 types pré-definit
+Airport - gère l'aeroport, contient les terminals et le tower; seulment son friend class Tower peut réserver des terminals et démander un chemin de décollage
+AirportType - contient les coordonnés importants (relatives au centre de chaque aeroport) comme le debut/fin des runways (il peut en avoir plusieurs); chaque AirportType peut génerer des chemins pour atterir et pour décoller
+Tower - classe qui gère la fonctionalité du tour de control; des avions peuvent démander des nouvelles instructions ansi qu'indiquer qu'ils sont arrivés à leur Terminal; Chaque Tower contient une affectation des avions aux terminals. Si un avion X démande d'atterir à un moment quand tout les Terminals de l'aeroport sont affectés, alors le Tower retourne un "cercle" autour de l'aeroport pour que X re-démande quand il a fini son cercle
+TowerSimulation - une classe pour la gestion de la simulation: creation de l'aeroport, affichage de l'usage sur la ligne de commande, creation des avions, etc
+config - pas de classe ici, mais des constantes qui determinent quelques comportements de la simulation, par example le nombre d'intervals necessaire pour débarquer un avion
+
+Tower :
+get_instructions : l'avion récupère les instructions de la tour.
+arrived_at_terminal : défini si l'avion est arrivé au terminal.
+
+Aircraft :
+turn_to_waypoint : se dirige vers le point défini
+turn : tourne l'avion
+get_speed_octant : donne la vitesse pendant un huitième de cercle
+arrive_at_terminal : défini si l'avion est au terminal
+operate_landing_gears : amorce l'atterissage
+add_waypoint : ajoute un waypoint
+move : bouge l'avion
+display : dessine l'avion dans la fenêtre
+
+Airport :
+get_tower : donne la tour de l'aéroport
+display : affiche la tour dans la fenêtre
+move : fait bouger les avions dans le terminal
+
+Terminal :
+in_use : défini si le terminal est utilisé
+is_servicing : défini si l'avion est en cours de débarquement
+assign_craft : associe un avion à un terminal
+finish_service : défini si l'avion a fini son débarquement
+move : fais bouger l'avion sur le terminal.
+
+         /   Airport
+       /        |
+Tower ----- Terminal
+        \       |
+          \   Aircraft
