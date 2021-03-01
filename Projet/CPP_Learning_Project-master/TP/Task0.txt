@@ -63,3 +63,8 @@ move : fais bouger l'avion sur le terminal.
 Tower ----- Terminal
         \       |
           \   Aircraft
+
+add_waypoint défini un chemin pour un avion, turn_to_waypoint le dirige vers ce
+chemin, et donc tout cela est lié aux classes geometry et waypoint.
+On représente les chemins avec une deque, car on veut faire des insertions en
+début et des suppressions en fin, et cela nous permettra d'avoir de meilleures performances.
