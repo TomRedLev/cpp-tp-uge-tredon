@@ -1,0 +1,5 @@
+/* Fichier de réponse de la task 1 - Tom REDON - Groupe 2 - M1 Informatique */
+
+/* Première partie : */
+On peut choisir d'implémenter une nouvelle classe, mais cela complexifie la lecture du code en général,
+l'autre solution permet une solution simple mais moins propre architecturalement parlant.

@@ -81,3 +81,5 @@ La variable pour contrôler le temps de débarquement des avions, dans config.
 // A FAIRE Q5
 
 // A FAIRE Q6
+
+FINI GRACE A LA CORRECTION 

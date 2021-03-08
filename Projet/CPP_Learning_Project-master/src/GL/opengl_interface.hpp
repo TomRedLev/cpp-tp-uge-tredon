@@ -18,6 +18,7 @@
 
 namespace GL {
 
+// FRAMERATE CONTROL
 inline unsigned int ticks_per_sec = DEFAULT_TICKS_PER_SEC;
 inline float zoom                 = DEFAULT_ZOOM;
 inline bool fullscreen            = false;
@@ -30,7 +31,6 @@ inline std::unordered_map<char, KeyStroke> keystrokes;
 void handle_error(const std::string& prefix, const GLenum err = glGetError());
 void keyboard(unsigned char key, int, int);
 void toggle_fullscreen();
-void toggle_pause();
 void change_zoom(const float factor);
 void init_gl(int argc, char** argv, const char* title);
 void loop();
