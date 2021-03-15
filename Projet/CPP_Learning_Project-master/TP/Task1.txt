@@ -3,3 +3,4 @@
 /* Première partie : */
 On peut choisir d'implémenter une nouvelle classe, mais cela complexifie la lecture du code en général,
 l'autre solution permet une solution simple mais moins propre architecturalement parlant.
+Modifié tower_sim et aircraftManager
