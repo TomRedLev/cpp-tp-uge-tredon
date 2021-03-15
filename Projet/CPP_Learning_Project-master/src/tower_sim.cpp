@@ -65,6 +65,15 @@ void TowerSimulation::create_keystrokes()
 	GL::keystrokes.emplace('p', []() { GL::pause = !GL::pause; });
 	GL::keystrokes.emplace('z', []() { GL::ticks_per_sec = std::max(GL::ticks_per_sec - 1u, 1u); });
 	GL::keystrokes.emplace('a', []() { GL::ticks_per_sec = std::min(GL::ticks_per_sec + 1u, 180u); });
+	// TASK 2 :
+	GL::keystrokes.emplace('0', [this]() { manager.airlines_number(airlines[0]); });
+	GL::keystrokes.emplace('1', [this]() { manager.airlines_number(airlines[1]); });
+	GL::keystrokes.emplace('2', [this]() { manager.airlines_number(airlines[2]); });
+	GL::keystrokes.emplace('3', [this]() { manager.airlines_number(airlines[3]); });
+	GL::keystrokes.emplace('4', [this]() { manager.airlines_number(airlines[4]); });
+	GL::keystrokes.emplace('5', [this]() { manager.airlines_number(airlines[5]); });
+	GL::keystrokes.emplace('6', [this]() { manager.airlines_number(airlines[6]); });
+	GL::keystrokes.emplace('7', [this]() { manager.airlines_number(airlines[7]); });
 }
 
 void TowerSimulation::display_help() const
@@ -72,9 +81,9 @@ void TowerSimulation::display_help() const
     std::cout << "This is an airport tower simulator" << std::endl
               << "the following keysstrokes have meaning:" << std::endl;
 
-    for (const auto& ks_pair : GL::keystrokes)
+    for (const auto& [key, value]: GL::keystrokes)
     {
-        std::cout << ks_pair.first << ' ';
+        std::cout << key << ' ';
     }
 
     std::cout << std::endl;

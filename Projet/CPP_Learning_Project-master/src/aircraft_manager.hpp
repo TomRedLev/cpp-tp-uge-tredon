@@ -18,18 +18,25 @@ class AircraftManager : public GL::DynamicObject
 
 		bool update() override
 		{
-			for (auto aircraft_it = aircrafts.begin(); aircraft_it != aircrafts.end();)
-			{
-				auto& aircraft = **aircraft_it;
-				if (aircraft.update())
-				{
-					++aircraft_it;
-				}
-				else
-				{
-					aircraft_it = aircrafts.erase(aircraft_it);
-				}
-			}
+			aircrafts.erase(std::remove_if(aircrafts.begin(), aircrafts.end(),
+				[](std::unique_ptr<Aircraft>& aircraft_it) {
+					auto& aircraft = *aircraft_it;
+					return !aircraft.update();
+				}), aircrafts.end());
 			return true;
+		}
+
+		void airlines_number(std::string airline)
+		{
+			auto counter = std::count_if(aircrafts.begin(), aircrafts.end(),
+			[airline](std::unique_ptr<Aircraft>& aircraft_it) {
+				auto& aircraft = *aircraft_it;
+				auto& str = aircraft.get_flight_num();
+				if (airline == str.substr(0, 2)){
+					return true;
+				}
+				return false;
+			});
+			std::cout << airline << " : " << counter << std::endl;
 		}
 };

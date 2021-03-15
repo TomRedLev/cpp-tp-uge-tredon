@@ -202,10 +202,6 @@ intrin.h
 arm_neon.h
 -
 
-/home/tredon/Documents/M1/S2/CPP/cpp-tp-uge-tredon/Projet/CPP_Learning_Project-master/src/main.cpp
-tower_sim.hpp
-/home/tredon/Documents/M1/S2/CPP/cpp-tp-uge-tredon/Projet/CPP_Learning_Project-master/src/tower_sim.hpp
-
 /home/tredon/Documents/M1/S2/CPP/cpp-tp-uge-tredon/Projet/CPP_Learning_Project-master/src/runway.hpp
 geometry.hpp
 /home/tredon/Documents/M1/S2/CPP/cpp-tp-uge-tredon/Projet/CPP_Learning_Project-master/src/geometry.hpp
