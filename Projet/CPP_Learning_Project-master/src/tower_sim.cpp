@@ -74,6 +74,8 @@ void TowerSimulation::create_keystrokes()
 	GL::keystrokes.emplace('5', [this]() { manager.airlines_number(airlines[5]); });
 	GL::keystrokes.emplace('6', [this]() { manager.airlines_number(airlines[6]); });
 	GL::keystrokes.emplace('7', [this]() { manager.airlines_number(airlines[7]); });
+
+	GL::keystrokes.emplace('m', [this]() { std::cout << manager.number_of_crash() << std::endl;});
 }
 
 void TowerSimulation::display_help() const

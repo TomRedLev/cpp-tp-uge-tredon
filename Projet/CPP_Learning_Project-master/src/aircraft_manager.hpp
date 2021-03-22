@@ -10,6 +10,7 @@ class AircraftManager : public GL::DynamicObject
 {
 	private :
 		std::vector<std::unique_ptr<Aircraft>> aircrafts {};
+		int crash_number           = 0;
 	public :
 		void add_aircraft(std::unique_ptr<Aircraft> aircraft)
 		{
@@ -19,9 +20,18 @@ class AircraftManager : public GL::DynamicObject
 		bool update() override
 		{
 			aircrafts.erase(std::remove_if(aircrafts.begin(), aircrafts.end(),
-				[](std::unique_ptr<Aircraft>& aircraft_it) {
+				[this](std::unique_ptr<Aircraft>& aircraft_it) {
 					auto& aircraft = *aircraft_it;
-					return !aircraft.update();
+					try
+					{
+						return !aircraft.update();
+					}
+					catch (const AircraftCrash& err)
+					{
+						std::cerr << err.what() << std::endl;
+						crash_number++;
+						return true;
+					}
 				}), aircrafts.end());
 			return true;
 		}
@@ -38,5 +48,10 @@ class AircraftManager : public GL::DynamicObject
 				return false;
 			});
 			std::cout << airline << " : " << counter << std::endl;
+		}
+
+		int number_of_crash()
+		{
+			return crash_number;
 		}
 };

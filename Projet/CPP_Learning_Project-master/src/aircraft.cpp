@@ -105,6 +105,14 @@ bool Aircraft::update()
         // move in the direction of the current speed
         pos += speed;
 
+		// TASK 2 :
+		if (fuel == 0)
+		{
+			using namespace std::string_literals;
+			throw AircraftCrash { flight_number + " crashed into the ground because he was out of fuel"s };
+		}
+		fuel -= 1;
+
         // if we are close to our next waypoint, stike if off the list
         if (!waypoints.empty() && distance_to(waypoints.front()) < DISTANCE_THRESHOLD)
         {
