@@ -1,0 +1,9 @@
+/* Fichier de réponse de la task 4 - Tom REDON - Groupe 2 - M1 Informatique */
+
+Objectif 1 :
+
+Question 3 :
+En comparant les deux codes, on peut facilement voir que
+le compilateur produit du code en assembleur pour l'un et
+non pour l'autre car il évalue que la partie de code ne
+sera jamais vérifiée.

@@ -6,6 +6,67 @@
 #include <cmath>
 #include <iostream>
 
+template<int NbDim, typename Type>
+struct Point
+{
+	std::array<Type, NbDim> values;
+
+	Point() {}
+
+	Point(Type x, Type y): values { x, y }
+	{}
+
+	Point(Type x, Type y, Type z): values { x, y, z }
+	{}
+
+	Type& Point::operator[](int i) { return values[i]; }
+
+	// A faire : 
+	const Type& Point::operator[](int i) const { return values[i]; }
+	Point2D& operator+=(const Point2D& other)
+    {
+        x() += other.x();
+        y() += other.y();
+        return *this;
+    }
+
+    Point2D& operator*=(const Point2D& other)
+    {
+        x() *= other.x();
+        y() *= other.y();
+        return *this;
+    }
+
+    Point2D& operator*=(const float scalar)
+    {
+        x() *= scalar;
+        y() *= scalar;
+        return *this;
+    }
+
+    Point2D operator+(const Point2D& other) const
+    {
+        Point2D result = *this;
+        result += other;
+        return result;
+    }
+
+    Point2D operator*(const Point2D& other) const
+    {
+        Point2D result = *this;
+        result *= other;
+        return result;
+    }
+
+    Point2D operator*(const float scalar) const
+    {
+        Point2D result = *this;
+        result *= scalar;
+        return result;
+    }
+
+};
+
 struct Point2D
 {
     float values[2] {};

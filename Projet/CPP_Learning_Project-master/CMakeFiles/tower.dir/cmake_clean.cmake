@@ -1,10 +1,16 @@
 file(REMOVE_RECURSE
   "CMakeFiles/tower.dir/src/GL/opengl_interface.cpp.o"
+  "CMakeFiles/tower.dir/src/GL/opengl_interface.cpp.o.d"
   "CMakeFiles/tower.dir/src/aircraft.cpp.o"
+  "CMakeFiles/tower.dir/src/aircraft.cpp.o.d"
   "CMakeFiles/tower.dir/src/img/image.cpp.o"
+  "CMakeFiles/tower.dir/src/img/image.cpp.o.d"
   "CMakeFiles/tower.dir/src/main.cpp.o"
+  "CMakeFiles/tower.dir/src/main.cpp.o.d"
   "CMakeFiles/tower.dir/src/tower.cpp.o"
+  "CMakeFiles/tower.dir/src/tower.cpp.o.d"
   "CMakeFiles/tower.dir/src/tower_sim.cpp.o"
+  "CMakeFiles/tower.dir/src/tower_sim.cpp.o.d"
   "tower"
   "tower.pdb"
 )
