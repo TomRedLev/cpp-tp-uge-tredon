@@ -6,64 +6,69 @@
 #include <cmath>
 #include <iostream>
 
-template<int NbDim, typename Type>
-struct Point
-{
-	std::array<Type, NbDim> values;
+template<typename Type, Type nbDim>
+class Point {
+	private :
+		std::array<Type, nbDim> values;
 
-	Point() {}
+	public :
+		Point(Type x, Type y): values { x, y }
+		{}
 
-	Point(Type x, Type y): values { x, y }
-	{}
+		Point(Type x, Type y, Type z): values { x, y, z }
+		{}
 
-	Point(Type x, Type y, Type z): values { x, y, z }
-	{}
+		Type& operator[](int i) { return values[i]; }
 
-	Type& Point::operator[](int i) { return values[i]; }
+		// A faire :
+		const Type& operator[](int i) const { return values[i]; }
+		Point& operator+=(const Point& other)
+	    {
+			for (auto i = 0; i < values.size(); i++)
+			{
+				this[i] += other[i];
+			}
+	        return *this;
+	    }
 
-	// A faire : 
-	const Type& Point::operator[](int i) const { return values[i]; }
-	Point2D& operator+=(const Point2D& other)
-    {
-        x() += other.x();
-        y() += other.y();
-        return *this;
-    }
+	    Point& operator*=(const Point& other)
+	    {
+			for (auto i = 0; i < values.size(); i++)
+			{
+				this[i] *= other[i];
+			}
+	        return *this;
+	    }
 
-    Point2D& operator*=(const Point2D& other)
-    {
-        x() *= other.x();
-        y() *= other.y();
-        return *this;
-    }
+	    Point& operator*=(const Type scalar)
+	    {
+			for (auto i = 0; i < values.size(); i++)
+			{
+				this[i] *= scalar;
+			}
+	        return *this;
+	    }
 
-    Point2D& operator*=(const float scalar)
-    {
-        x() *= scalar;
-        y() *= scalar;
-        return *this;
-    }
+	    Point operator+(const Point& other) const
+	    {
+	        Point result = *this;
+	        result += other;
+	        return result;
+	    }
 
-    Point2D operator+(const Point2D& other) const
-    {
-        Point2D result = *this;
-        result += other;
-        return result;
-    }
+	    Point operator*(const Point& other) const
+	    {
+	        Point result = *this;
+	        result *= other;
+	        return result;
+	    }
 
-    Point2D operator*(const Point2D& other) const
-    {
-        Point2D result = *this;
-        result *= other;
-        return result;
-    }
-
-    Point2D operator*(const float scalar) const
-    {
-        Point2D result = *this;
-        result *= scalar;
-        return result;
-    }
+	    Point operator*(const Type scalar) const
+	    {
+	        Point result = *this;
+	        result *= scalar;
+	        return result;
+	    }
 
 };
 
