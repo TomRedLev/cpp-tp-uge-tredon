@@ -9,7 +9,7 @@ Si on ajoute plus de 3 avions, les autres avions attendent que les places
 soient disponibles pour attérir.
 
 /* Deuxième partie : */
-Commencant avec le repo GL/. Là on a
+Commencant avec le repo GL/. Nous avons donc :
 Displayable - c'est une classe abstrait qui forme la base pour tout les choses qui peuvent être dessiné sur l'ecran. La classe contient une coordonné z qui permet de trier les objets de cette classe.
 DynamicObjject - une autre classe abstrait qui forme la base pour tout les choses qui peuvent "bouger" (en sense large, par example, un Terminal est aus
 si un DynamicObject, son movement est le débarquement des avions)
@@ -76,10 +76,23 @@ Dans opengl_interface, on peut voir le timer dans loop.
 
 La variable pour contrôler le temps de débarquement des avions, dans config.
 
-// A FAIRE Q4
+On peut savoir dans l'update des objets s'il est à supprimer ou non.
+On peut par exemple le vérifier dans le terminal, mais cela pourrait rater, car l'on a
+pas obligatoirement accès à suffisamment d'information sur l'avion.
+Le mieux est sûrement de le faire dans l'update des aircrafts pour savoir s'il est à supprimer.
+Il faudra transmettre des booléens pour savoir si l'on doit supprimer l'avion.
 
-// A FAIRE Q5
+On peut rendre display_queue statique, cela permettra d'accéder au constructeur et au destructeur sans
+avoir besoin de les définir ailleurs.
 
-// A FAIRE Q6
+On peut utiliser une structure std::map sur AircraftToTerminal pour pouvoir avoir un accès en O(1)
+sur les avions.
 
-FINI GRACE A LA CORRECTION 
+
+/* Quatrième partie : */
+
+On a associé un aéroport à la tour pour que seule la tour puisse accéder aux terminaux
+d'un aéroport.
+
+On ne veut pas passer par référence, car l'on ne souhaite pas modifier le point de direction quand
+on se dirige vers ce dernier. Il ne me semble pas possible d'éviter la copie du Point3D passé en paramètre.
