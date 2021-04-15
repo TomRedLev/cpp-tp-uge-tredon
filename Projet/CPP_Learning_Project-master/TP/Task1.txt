@@ -3,4 +3,14 @@
 /* Première partie : */
 On peut choisir d'implémenter une nouvelle classe, mais cela complexifie la lecture du code en général,
 l'autre solution permet une solution simple mais moins propre architecturalement parlant.
-Modifié tower_sim et aircraftManager
+Modifié tower_sim et aircraftManager.
+
+1 - On peut détruire les avions dans l'update situé dans le fichier Aircrafts.
+2 - On a des références aux avions dans la display_queue et dans la move_queue, on veut
+donc l'enlever des deux quand on supprime un élément.
+3 - Il faut détruire l'élément, et on pourra le supprimer au moment des updates. Il faudra
+s'assurer que tout est bien supprimé et qu'il ne reste pas des éléments perdus dans la mémoire.
+4 - Il ne faut pas appliquer ça à l'aircraft manager car cela est plus complexe que d'autres
+méthodes, on peut largement simplifier la gestion de la référence des aircrafts.
+
+/* Seconde partie : */
