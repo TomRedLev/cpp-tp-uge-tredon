@@ -26,6 +26,7 @@ public:
         assert(aircraft.distance_to(pos) < DISTANCE_THRESHOLD);
         std::cout << "now servicing " << aircraft.get_flight_num() << "...\n";
         service_progress = 0;
+		//aircraft.fill();
     }
 
     void finish_service()

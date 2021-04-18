@@ -76,6 +76,7 @@ public:
 
     const std::string& get_flight_num() const { return flight_number; }
     float distance_to(const Point3D& p) const { return pos.distance_to(p); }
+	void fill() { fuel = rand() % 2851 + 150; }
 
     void display() const override;
     bool update() override;

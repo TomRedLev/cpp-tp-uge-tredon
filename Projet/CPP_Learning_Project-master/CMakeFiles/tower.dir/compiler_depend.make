@@ -1143,7 +1143,8 @@ CMakeFiles/tower.dir/src/main.cpp.o: src/main.cpp \
   /usr/include/c++/9/bits/deque.tcc \
   /usr/include/c++/9/map \
   /usr/include/c++/9/bits/stl_map.h \
-  /usr/include/c++/9/bits/stl_multimap.h
+  /usr/include/c++/9/bits/stl_multimap.h \
+  src/aircraft_factory.hpp
 
 CMakeFiles/tower.dir/src/tower.cpp.o: src/tower.cpp \
   /usr/include/stdc-predef.h \
@@ -1748,6 +1749,7 @@ CMakeFiles/tower.dir/src/tower_sim.cpp.o: src/tower_sim.cpp \
   /usr/include/c++/9/map \
   /usr/include/c++/9/bits/stl_map.h \
   /usr/include/c++/9/bits/stl_multimap.h \
+  src/aircraft_factory.hpp \
   src/airport.hpp \
   src/airport_type.hpp \
   src/runway.hpp \
@@ -1759,6 +1761,8 @@ src/tower_sim.cpp:
 src/terminal.hpp:
 
 src/airport.hpp:
+
+src/aircraft_factory.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/9/include/mmintrin.h:
 
