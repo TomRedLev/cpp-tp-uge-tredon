@@ -85,13 +85,13 @@ bool Aircraft::update()
 		{
 			return false;
 		}
+
 		constexpr auto front = false;
 		for (const auto& wp : control.get_instructions(*this))
 		{
 			add_waypoint<front>(wp);
 		}
     }
-
     if (!is_at_terminal)
     {
         turn_to_waypoint();

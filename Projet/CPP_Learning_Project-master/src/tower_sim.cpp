@@ -16,8 +16,6 @@
 
 using namespace std::string_literals;
 
-const std::string airlines[8] = { "AF", "LH", "EY", "DL", "KL", "BA", "AY", "EY" };
-
 TowerSimulation::TowerSimulation(int argc, char** argv) :
     help { (argc > 1) && (std::string { argv[1] } == "--help"s || std::string { argv[1] } == "-h"s) }
 {
@@ -35,26 +33,17 @@ TowerSimulation::~TowerSimulation()
     delete airport;
 }
 
-[[nodiscard]] std::unique_ptr<Aircraft> TowerSimulation::create_aircraft(const AircraftType& type) const
+[[nodiscard]] std::unique_ptr<Aircraft> TowerSimulation::create_aircraft(const AircraftType& type)
 {
     assert(airport); // make sure the airport is initialized before creating aircraft
+	return factory.create_aircraft(type, airport->get_tower());
 
-	const std::string flight_number = airlines[std::rand() % 8] + std::to_string(1000 + (rand() % 9000));
-    const float angle       = (rand() % 1000) * 2 * 3.141592f / 1000.f; // random angle between 0 and 2pi
-    const Point3D start     = Point3D { std::sin(angle), std::cos(angle), 0 } * 3 + Point3D { 0, 0, 2 };
-    const Point3D direction = (-start).normalize();
-
-	return factory.createAircraft(type, flight_number, start, direction, airport->get_tower());
-	// V2 :
-	// return std::make_unique<Aircraft>(type, flight_number, start, direction, airport->get_tower());
-	// V1:
-    // Aircraft* aircraft = new Aircraft { type, flight_number, start, direction, airport->get_tower() };
-    // GL::move_queue.emplace(aircraft);
 }
 
-[[nodiscard]] std::unique_ptr<Aircraft> TowerSimulation::create_random_aircraft() const
+[[nodiscard]] std::unique_ptr<Aircraft> TowerSimulation::create_random_aircraft()
 {
-    return create_aircraft(*(aircraft_types[rand() % 3]));
+	assert(airport);
+    return factory.create_random_aircraft(airport->get_tower());
 }
 
 void TowerSimulation::create_keystrokes()
@@ -70,15 +59,10 @@ void TowerSimulation::create_keystrokes()
 	GL::keystrokes.emplace('z', []() { GL::ticks_per_sec = std::max(GL::ticks_per_sec - 1u, 1u); });
 	GL::keystrokes.emplace('a', []() { GL::ticks_per_sec = std::min(GL::ticks_per_sec + 1u, 180u); });
 	// TASK 2 :
-	GL::keystrokes.emplace('0', [this]() { manager.airlines_number(airlines[0]); });
-	GL::keystrokes.emplace('1', [this]() { manager.airlines_number(airlines[1]); });
-	GL::keystrokes.emplace('2', [this]() { manager.airlines_number(airlines[2]); });
-	GL::keystrokes.emplace('3', [this]() { manager.airlines_number(airlines[3]); });
-	GL::keystrokes.emplace('4', [this]() { manager.airlines_number(airlines[4]); });
-	GL::keystrokes.emplace('5', [this]() { manager.airlines_number(airlines[5]); });
-	GL::keystrokes.emplace('6', [this]() { manager.airlines_number(airlines[6]); });
-	GL::keystrokes.emplace('7', [this]() { manager.airlines_number(airlines[7]); });
-
+	for (auto i = '0'; i < '8'; i++) {
+        GL::keystrokes.emplace(i, [this, i]() { std::cout << manager.airlines_number(factory.get_airline(i - '0')) << std::endl; });
+    }
+	
 	GL::keystrokes.emplace('m', [this]() { std::cout << manager.number_of_crash() << std::endl;});
 }
 

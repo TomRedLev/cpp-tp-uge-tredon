@@ -1,14 +1,27 @@
 /* Fichier de réponse de la task 0 - Tom REDON - Groupe 2 - M1 Informatique */
 
-/* Première partie : */
+/* A - Exécution : */
+J'ai donc exécuté les commandes suivantes pour compiler et exécuter le programme :
+cmake .
+make
+./tower
+
 La fonction responsable des inputs du programme est : create_keystrokes().
 Il faut appuyer sur C pour créer un avion.
 Il faut appuyer sur X ou sur Q pour quitter le programme.
 La touche F permet de mettre en full screen le programme.
-Si on ajoute plus de 3 avions, les autres avions attendent que les places
-soient disponibles pour attérir.
 
-/* Deuxième partie : */
+L'avion tourne, atterit sur la piste, va au terminal puis redécolle et recommence.
+Voici ce qui se passe en console :
+AY9583 is now landing...
+now servicing AY9583...
+done servicing AY9583
+AY9583 lift off
+
+Si on ajoute plus de 3 avions, les autres avions attendent que les terminaux
+soient disponibles pour attérir, ils tournent en rond tant qu'un terminal n'est pas disponible.
+
+/* B - Analyse du code : */
 Commencant avec le repo GL/. Nous avons donc :
 Displayable - c'est une classe abstrait qui forme la base pour tout les choses qui peuvent être dessiné sur l'ecran. La classe contient une coordonné z qui permet de trier les objets de cette classe.
 DynamicObjject - une autre classe abstrait qui forme la base pour tout les choses qui peuvent "bouger" (en sense large, par example, un Terminal est aus
@@ -69,7 +82,7 @@ chemin, et donc tout cela est lié aux classes geometry et waypoint.
 On représente les chemins avec une deque, car on veut faire des insertions en
 début et des suppressions en fin, et cela nous permettra d'avoir de meilleures performances.
 
-/* Troisième partie : */
+/* C - Bidouillons ! : */
 On peut modifier la vitesse dans aircraft_type.hpp.
 
 Dans opengl_interface, on peut voir le timer dans loop.
