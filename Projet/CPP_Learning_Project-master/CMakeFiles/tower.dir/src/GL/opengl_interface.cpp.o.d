@@ -203,6 +203,8 @@ CMakeFiles/tower.dir/src/GL/opengl_interface.cpp.o: \
  /usr/include/c++/9/tr1/poly_hermite.tcc \
  /usr/include/c++/9/tr1/poly_laguerre.tcc \
  /usr/include/c++/9/tr1/riemann_zeta.tcc /usr/include/c++/9/iostream \
+ /usr/include/c++/9/numeric /usr/include/c++/9/bits/stl_numeric.h \
+ /usr/include/c++/9/pstl/glue_numeric_defs.h \
  /home/tredon/Documents/M1/S2/CPP/cpp-tp-uge-tredon/Projet/CPP_Learning_Project-master/src/GL/displayable.hpp \
  /home/tredon/Documents/M1/S2/CPP/cpp-tp-uge-tredon/Projet/CPP_Learning_Project-master/src/GL/dynamic_object.hpp \
  /usr/include/c++/9/unordered_set /usr/include/c++/9/bits/unordered_set.h \

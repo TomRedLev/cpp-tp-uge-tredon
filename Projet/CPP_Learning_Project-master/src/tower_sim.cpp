@@ -60,9 +60,9 @@ void TowerSimulation::create_keystrokes()
 	GL::keystrokes.emplace('a', []() { GL::ticks_per_sec = std::min(GL::ticks_per_sec + 1u, 180u); });
 	// TASK 2 :
 	for (auto i = '0'; i < '8'; i++) {
-        GL::keystrokes.emplace(i, [this, i]() { std::cout << manager.airlines_number(factory.get_airline(i - '0')) << std::endl; });
+        GL::keystrokes.emplace(i, [this, i]() { std::cout << factory.get_airline(i - '0') << " : " << manager.airlines_number(factory.get_airline(i - '0')) << std::endl; });
     }
-	
+
 	GL::keystrokes.emplace('m', [this]() { std::cout << manager.number_of_crash() << std::endl;});
 }
 

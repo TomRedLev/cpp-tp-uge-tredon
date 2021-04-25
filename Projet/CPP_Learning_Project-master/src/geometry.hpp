@@ -5,6 +5,7 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
+#include <numeric>
 
 // template<typename Type, Type nbDim>
 // class Point {
@@ -130,7 +131,7 @@ struct Point2D
 
 struct Point3D
 {
-    float values[3] {};
+    std::array<float, 3> values {};
 
     Point3D() {}
     Point3D(float x, float y, float z) : values { x, y, z } {}
@@ -146,25 +147,19 @@ struct Point3D
 
     Point3D& operator+=(const Point3D& other)
     {
-        x() += other.x();
-        y() += other.y();
-        z() += other.z();
+		std::transform(values.begin(), values.end(), other.values.begin(), values.begin(), std::plus<>());
         return *this;
     }
 
     Point3D& operator-=(const Point3D& other)
     {
-        x() -= other.x();
-        y() -= other.y();
-        z() -= other.z();
+        std::transform(values.begin(), values.end(), other.values.begin(), values.begin(), std::minus<>());
         return *this;
     }
 
     Point3D& operator*=(const float scalar)
     {
-        x() *= scalar;
-        y() *= scalar;
-        z() *= scalar;
+		std::transform(values.begin(), values.end(), values.begin(), [scalar](float a) { return a * scalar; });
         return *this;
     }
 
@@ -191,7 +186,12 @@ struct Point3D
 
     Point3D operator-() const { return Point3D { -x(), -y(), -z() }; }
 
-    float length() const { return std::sqrt(x() * x() + y() * y() + z() * z()); }
+    float length() const
+	{
+		std::array<float, 3> tmp {};
+		std::transform(values.begin(), values.end(), values.begin(), tmp.begin(), std::multiplies<float>());
+		return std::sqrt(std::reduce(tmp.begin(), tmp.end()));
+	}
 
     float distance_to(const Point3D& other) const { return (*this - other).length(); }
 

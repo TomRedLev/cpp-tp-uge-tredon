@@ -36,7 +36,7 @@ class AircraftManager : public GL::DynamicObject
 			return true;
 		}
 
-		void airlines_number(std::string airline)
+		int airlines_number(std::string airline)
 		{
 			auto counter = std::count_if(aircrafts.begin(), aircrafts.end(),
 			[airline](std::unique_ptr<Aircraft>& aircraft_it) {
@@ -47,7 +47,7 @@ class AircraftManager : public GL::DynamicObject
 				}
 				return false;
 			});
-			std::cout << airline << " : " << counter << std::endl;
+			return counter;
 		}
 
 		int number_of_crash()
