@@ -78,7 +78,7 @@ public:
     float distance_to(const Point3D& p) const { return pos.distance_to(p); }
 	void fill() { fuel = rand() % 2851 + 150; }
 	bool has_terminal() const { return waypoints.back().is_at_terminal(); }
-	bool is_circling() const { return !has_terminal() && !is_on_ground() && !is_service_done; }
+	bool is_circling() const { return !has_terminal() && !is_service_done && !is_at_terminal; }
 	bool is_low_on_fuel() const { return fuel < 200; }
 	int get_fuel() const { return fuel; }
 

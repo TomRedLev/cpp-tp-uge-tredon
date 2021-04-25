@@ -83,7 +83,6 @@ bool Aircraft::update()
 
 		if (is_service_done)
 		{
-			control.unreserve_terminal(*this);
 			return false;
 		}
 
@@ -108,7 +107,11 @@ bool Aircraft::update()
 		fuel -= 1;
 
 		if (is_circling()){
-			control.reserve_terminal(*this);
+			constexpr auto front = false;
+			for (const auto& wp : control.reserve_terminal(*this))
+			{
+				add_waypoint<front>(wp);
+			}
 		}
 
         // if we are close to our next waypoint, stike if off the list

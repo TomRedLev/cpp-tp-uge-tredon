@@ -19,6 +19,23 @@ class AircraftManager : public GL::DynamicObject
 
 		bool update() override
 		{
+			// std::sort(aircrafts.begin(), aircrafts.end(),
+			// 	[](std::unique_ptr<Aircraft> &a, std::unique_ptr<Aircraft> &b)
+			// 	{
+			// 		if (a->has_terminal() && !b->has_terminal())
+			// 		{
+			// 			return true;
+			// 		}
+			// 		else if (!a->has_terminal() && b->has_terminal())
+			// 		{
+			// 			return false;
+			// 		}
+			// 		if (a->get_fuel() < b->get_fuel())
+			// 		{
+			// 			return true;
+			// 		}
+			// 		return false;
+			// 	});
 			aircrafts.erase(std::remove_if(aircrafts.begin(), aircrafts.end(),
 				[this](std::unique_ptr<Aircraft>& aircraft_it) {
 					auto& aircraft = *aircraft_it;
