@@ -68,47 +68,24 @@ void Tower::arrived_at_terminal(const Aircraft& aircraft)
 // Task 2 - Obj B :
 WaypointQueue Tower::reserve_terminal(Aircraft& aircraft)
 {
-	//TODO
-    if (!aircraft.is_at_terminal)
-    {
-        // if the aircraft is far, then just guide it to the airport vicinity
-        if (aircraft.distance_to(airport.pos) < 5)
-        {
-            // try and reserve a terminal for the craft to land
-            const auto vp = airport.reserve_terminal(aircraft);
-            if (!vp.first.empty())
-            {
-                reserved_terminals.emplace(&aircraft, vp.second);
-                return vp.first;
-            }
-            else
-            {
-                return get_circle();
-            }
-        }
-        else
-        {
-            return get_circle();
-        }
-    }
-    else
-    {
-        // get a path for the craft to start
-        const auto it = reserved_terminals.find(&aircraft);
-        assert(it != reserved_terminals.end());
-        const auto terminal_num = it->second;
-        Terminal& terminal      = airport.get_terminal(terminal_num);
-        if (!terminal.is_servicing())
-        {
-			aircraft.is_service_done = true;
-            terminal.finish_service();
-            reserved_terminals.erase(it);
-            aircraft.is_at_terminal = false;
-            return airport.start_path(terminal_num);
-        }
-        else
-        {
-            return {};
-        }
-    }
+	if (!aircraft.has_terminal()){
+		const auto terminal = airport.reserve_terminal(aircraft);
+		if (!terminal.first.empty())
+		{
+			reserved_terminals.emplace(&aircraft, terminal.second);
+			return terminal.first;
+		}
+	}
+	return {};
+}
+
+
+
+void Tower::unreserve_terminal(Aircraft& aircraft)
+{
+	const auto it = reserved_terminals.find(&aircraft);
+    if (it != reserved_terminals.end()) {
+		airport.get_terminal(it->second).unreserve();
+		reserved_terminals.erase(&aircraft);
+	}
 }

@@ -35,6 +35,7 @@ public:
 
 	const std::string get_airline(int num_airline) const
 	{
+		assert(num_airline >= 0 && num_airline < 8);
 		return airlines[num_airline];
 	}
 };

@@ -33,4 +33,5 @@ public:
 
 	// Task 2 - Obj B :
 	WaypointQueue reserve_terminal(Aircraft& aircraft);
+	void unreserve_terminal(Aircraft& aircraft);
 };

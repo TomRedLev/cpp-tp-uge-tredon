@@ -19,6 +19,7 @@ using namespace std::string_literals;
 TowerSimulation::TowerSimulation(int argc, char** argv) :
     help { (argc > 1) && (std::string { argv[1] } == "--help"s || std::string { argv[1] } == "-h"s) }
 {
+	assert(!is_valid);
     MediaPath::initialize(argv[0]);
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     GL::init_gl(argc, argv, "Airport Tower Simulation");
@@ -26,6 +27,7 @@ TowerSimulation::TowerSimulation(int argc, char** argv) :
     create_keystrokes();
 
 	GL::move_queue.emplace(&manager);
+	is_valid = true;
 }
 
 TowerSimulation::~TowerSimulation()
@@ -36,14 +38,18 @@ TowerSimulation::~TowerSimulation()
 [[nodiscard]] std::unique_ptr<Aircraft> TowerSimulation::create_aircraft(const AircraftType& type)
 {
     assert(airport); // make sure the airport is initialized before creating aircraft
-	return factory.create_aircraft(type, airport->get_tower());
+	auto val = factory.create_aircraft(type, airport->get_tower());
+	assert(val != nullptr);
+	return val;
 
 }
 
 [[nodiscard]] std::unique_ptr<Aircraft> TowerSimulation::create_random_aircraft()
 {
 	assert(airport);
-    return factory.create_random_aircraft(airport->get_tower());
+	auto val = factory.create_random_aircraft(airport->get_tower());
+	assert(val != nullptr);
+    return val;
 }
 
 void TowerSimulation::create_keystrokes()

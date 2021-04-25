@@ -83,6 +83,7 @@ bool Aircraft::update()
 
 		if (is_service_done)
 		{
+			control.unreserve_terminal(*this);
 			return false;
 		}
 
@@ -106,6 +107,10 @@ bool Aircraft::update()
 		}
 		fuel -= 1;
 
+		if (is_circling()){
+			control.reserve_terminal(*this);
+		}
+
         // if we are close to our next waypoint, stike if off the list
         if (!waypoints.empty() && distance_to(waypoints.front()) < DISTANCE_THRESHOLD)
         {
@@ -124,6 +129,7 @@ bool Aircraft::update()
         {
             if (!landing_gear_deployed)
             {
+				control.unreserve_terminal(*this);
                 using namespace std::string_literals;
                 throw AircraftCrash { flight_number + " crashed into the ground"s };
             }

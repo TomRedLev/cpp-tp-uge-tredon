@@ -46,4 +46,9 @@ public:
         }
 		return true;
     }
+
+	void unreserve()
+	{
+		current_aircraft = nullptr;
+	}
 };

@@ -58,7 +58,9 @@ public:
         texture { image },
         terminals { type.create_terminals() },
         tower { *this }
-    {}
+    {
+		assert(image);
+	}
 
     Tower& get_tower() { return tower; }
 

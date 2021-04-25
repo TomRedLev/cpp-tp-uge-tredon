@@ -8,6 +8,7 @@ struct AircraftType;
 class TowerSimulation
 {
 private:
+	bool is_valid = false;
     bool help        = false;
     Airport* airport = nullptr;
 
